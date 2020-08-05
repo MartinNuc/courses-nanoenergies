@@ -1,0 +1,39 @@
+type Coords3d = {
+  x: number;
+  y: number;
+  z: number;
+}; // Coords3d by mohl extendovat 2d
+type Coords2d = {
+  x: number;
+  y: number;
+};
+type Sphere = {
+  coords: Coords3d;
+};
+type Circle = {
+  coords: Coords2d;
+};
+type Shape = Sphere | Circle;
+function placeRandomly<T extends Shape>(
+  shape: T
+): T extends Sphere ? Coords3d : Coords2d {
+  if (is3d(shape)) {
+    shape.coords
+    return {
+      x:1,
+      y: 2,
+      z: 5
+    };
+  } else {
+    return {
+      x: 1,
+      y: 2
+    };
+  }
+}
+
+function is3d(shape: Shape): shape is Sphere {
+  return 'z' in shape.coords;
+}
+
+let x = placeRandomly({ coords: { x: 1, y: 2 } });
