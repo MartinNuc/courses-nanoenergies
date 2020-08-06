@@ -6,13 +6,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class WordsCountPipe implements PipeTransform {
   transform(value: string): number {
     if (!this.isString(value)) {
-      throw new Error('Input for words count should be a string');
+      return 0;
     }
     return value
       .trim()
       .split(/\s+/)
-      .filter((words) => words !== '')
-      .length;
+      .filter((words) => words !== '').length;
   }
 
   isString(input: unknown): input is string {

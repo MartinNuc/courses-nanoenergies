@@ -1,19 +1,31 @@
 
+<app-zupa-counter #zupa>
+  <h1>Counter: {{ zupa.counter }}</h1>
+</app-zupa-counter>
+<button type="button" (click)="zupa.inc()">INC</button>
+<button type="button" (click)="zupa.dec()">DEC</button>
+
+<app-zupa-counter #zupa2> Counter: {{ zupa2.counter }} </app-zupa-counter>
+<button type="button" (click)="zupa2.inc()">INC</button>
+<button type="button" (click)="zupa2.dec()">DEC</button>
+
 <app-article-form (save)="createArticle($event)"></app-article-form>
 
-<button (click)="toggleDropdown()">click ⬇️</button>
+<app-article-count></app-article-count>
+
+<button class="dropdown-container" (click)="toggleDropdown()">click ⬇️
+  <div #dropdownElement *ngIf="isDropdownOpened" class="dropdown">
+    <ul>
+      <li>google.com</li>
+      <li>ibm.com</li>
+      <li>nanoenergies.cz</li>
+    </ul>
+  </div>
+</button>
 😁
-<div *ngIf="isDropdownOpened" class="dropdown">
-  <ul>
-    <li>google.com</li>
-    <li>ibm.com</li>
-    <li>nanoenergies.cz</li>
-  </ul>
-</div>
+<pre>{{ articleService.articlesArray | json }}</pre>
 
-<pre>{{ articlesArray | json }}</pre>
-
-<div *ngFor="let article of articlesArray">
+<div *ngFor="let article of articleService.articlesArray">
   <app-article
     [article]="article"
     (deleteArticle)="deleteArticle(article)"

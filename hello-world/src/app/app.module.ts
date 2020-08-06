@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ArticleCountComponent } from './article-count/article-count.component';
+import { ZupaCounterComponent } from './zupa-counter/zupa-counter.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     WordsCountPipe,
     ColoredButtonsComponent,
     ArticleFormComponent,
+    ArticleCountComponent,
+    ZupaCounterComponent,
   ],
   imports: [
     BrowserModule,

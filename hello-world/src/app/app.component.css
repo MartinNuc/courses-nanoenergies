@@ -1,4 +1,15 @@
+.dropdown-container {
+  position: relative;
+}
+
 .dropdown {
+  position: absolute;
   border: 1px solid black;
   padding: 5px 10px;
+  background: white;
+}
+
+.dropdown ul {
+  list-style-type: none;
+  padding-inline-start: 0;
 }
