@@ -1,0 +1,23 @@
+
+<app-article-form (save)="createArticle($event)"></app-article-form>
+
+<button (click)="toggleDropdown()">click ⬇️</button>
+😁
+<div *ngIf="isDropdownOpened" class="dropdown">
+  <ul>
+    <li>google.com</li>
+    <li>ibm.com</li>
+    <li>nanoenergies.cz</li>
+  </ul>
+</div>
+
+<pre>{{ articlesArray | json }}</pre>
+
+<div *ngFor="let article of articlesArray">
+  <app-article
+    [article]="article"
+    (deleteArticle)="deleteArticle(article)"
+  ></app-article>
+</div>
+
+<app-colored-buttons></app-colored-buttons>

@@ -1,0 +1,44 @@
+<div class="container">
+  <form [formGroup]="articleForm" (ngSubmit)="onFormSubmit()">
+      <div>
+        <input
+          placeholder="title"
+          type="text"
+          name="title"
+          formControlName="title"
+        />
+      </div>
+      <div>
+        <input
+          placeholder="text"
+          type="text"
+          name="text"
+          formControlName="text"
+        />
+      </div>
+
+    <div class="container" formGroupName="author">
+      <div>
+        <input
+          placeholder="name"
+          type="text"
+          name="name"
+          formControlName="name"
+        />
+        <div *ngIf="articleForm.get('author.name')?.invalid">
+          INVALID
+        </div>
+      </div>
+      <div>
+        <input
+          placeholder="email"
+          type="email"
+          name="email"
+          formControlName="email"
+        />
+      </div>
+    </div>
+
+    <button [disabled]="articleForm.invalid" type="submit">Save</button>
+  </form>
+</div>
