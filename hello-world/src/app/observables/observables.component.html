@@ -1,0 +1,10 @@
+
+<button type="button" (click)="emit()">Emit</button>
+
+<div *ngIf="subj | async as value; else loading">
+  {{ value }}
+</div>
+
+<ng-template #loading>
+  waiting...
+</ng-template>

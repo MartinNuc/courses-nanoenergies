@@ -12,6 +12,8 @@ import { ArticleFormComponent } from './article-form/article-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleCountComponent } from './article-count/article-count.component';
 import { ZupaCounterComponent } from './zupa-counter/zupa-counter.component';
+import { ObservablesComponent } from './observables/observables.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { ZupaCounterComponent } from './zupa-counter/zupa-counter.component';
     ArticleFormComponent,
     ArticleCountComponent,
     ZupaCounterComponent,
+    ObservablesComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,4 @@
-<h1>{{ getCount() }}</h1>
+<h1>{{ articleCount$ | async }}</h1>
+<button type="button" (click)="rerender()">
+  rerender
+</button>

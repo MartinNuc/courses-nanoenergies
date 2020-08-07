@@ -1,4 +1,6 @@
 
+<app-observables></app-observables>
+
 <app-zupa-counter #zupa>
   <h1>Counter: {{ zupa.counter }}</h1>
 </app-zupa-counter>
@@ -23,9 +25,9 @@
   </div>
 </button>
 😁
-<pre>{{ articleService.articlesArray | json }}</pre>
+<pre>{{ articleService.articles$ | async | json }}</pre>
 
-<div *ngFor="let article of articleService.articlesArray">
+<div *ngFor="let article of articleService.articles$ | async">
   <app-article
     [article]="article"
     (deleteArticle)="deleteArticle(article)"
@@ -33,3 +35,4 @@
 </div>
 
 <app-colored-buttons></app-colored-buttons>
+

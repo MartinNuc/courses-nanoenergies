@@ -18,10 +18,9 @@ describe('ArticleComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ArticleComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
-  it(`displays article's title and text`, () => {
+  fit(`displays article's title and text`, () => {
     component.article = {
       title: 'My title',
       text: 'Hello'

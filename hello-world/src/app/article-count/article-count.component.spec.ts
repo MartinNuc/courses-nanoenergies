@@ -3,8 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticleCountComponent } from './article-count.component';
 import { ArticleService } from '../article.service';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
-fdescribe('ArticleCountComponent', () => {
+describe('ArticleCountComponent', () => {
   let component: ArticleCountComponent;
   let fixture: ComponentFixture<ArticleCountComponent>;
 
@@ -22,10 +23,10 @@ fdescribe('ArticleCountComponent', () => {
 
   it('displays count of articles', () => {
     const articleService = TestBed.inject(ArticleService);
-    spyOn(articleService, 'getArticles').and.returnValue([]);
+    const articlesSpy = spyOnProperty(articleService, 'articles$', 'get').and.returnValue(of([]));
     const countElement = fixture.debugElement.query(By.css('h1'));
     fixture.detectChanges();
-    expect(articleService.getArticles).toHaveBeenCalledTimes(1);
+    expect(articlesSpy).toHaveBeenCalledTimes(1);
     expect(countElement.nativeElement.textContent).toContain('0');
   });
 });

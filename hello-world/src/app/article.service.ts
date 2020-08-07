@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Article } from './models/article';
 import { ArticleFormData } from './article-form/article-form.component';
+import { ReplaySubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleService {
 
-  articlesArray: Article[] = [
+  private changes$ = new ReplaySubject<Article[]>(1);
+  private articlesArray: Article[] = [
     {
       id: 1,
       title: 'jedna',
@@ -30,12 +32,15 @@ export class ArticleService {
     },
   ];
 
-  constructor() { }
+  constructor() {
+    this.notifySubscribers();
+  }
 
   deleteArticle(articleToDelete: Article): void {
     this.articlesArray = this.articlesArray.filter(
       (article) => article !== articleToDelete
     );
+    this.notifySubscribers();
   }
 
   createArticle(articleFormData: ArticleFormData): void {
@@ -44,10 +49,15 @@ export class ArticleService {
       id: this.getUniqueId(),
       timestamp: new Date(),
     });
+    this.notifySubscribers();
   }
 
-  getArticles(): Article[] {
-    return this.articlesArray;
+  private notifySubscribers(): void {
+    this.changes$.next(this.articlesArray);
+  }
+
+  get articles$(): Observable<Article[]> {
+    return this.changes$.asObservable();
   }
 
   private getUniqueId(): number {
